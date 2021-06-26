@@ -6,7 +6,7 @@ Individueel Project berkan alci ODISEE 1e jaar WEB &amp; MOBILE
 - Node.js
 - Fastify (middleware)
 - MongoDB
-- EJS & SCSS
+- HTML & SCSS
 
 2. Components:
 
