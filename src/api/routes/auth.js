@@ -7,4 +7,8 @@ router.get('/auth/register', (req, res) => {
 
 });
 
+router.get('/auth/login', (req, res) => {
+
+});
+
 module.exports = router;

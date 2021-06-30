@@ -9,47 +9,53 @@ const path = require('path');
 // @Route   /
 router.get('/', (req, res) => {
     res.render('./pages/index.ejs', {
-        title: 'IP - Home'
+        title: 'IP - Home',
+        validation: ''
     });
 });
 
 // @desc    Login page
 // @Route   /login
 router.get('/login', (req, res) => {
-    res.render('./pages/index.ejs', {
-        title: 'IP - Login'
+    res.render('./pages/login.ejs', {
+        title: 'IP - Login',
+        validation: '/js/validation.js'
     });
 });
 
-// @desc    Register page
-// @Route   /register
+//  @desc    Register page
+//  @Route   /register
 router.get('/register', (req, res) => {
-    res.render('./pages/index.ejs', {
-        title: 'IP - Register'
+    res.render('./pages/register.ejs', {
+        title: 'IP - Register',
+        validation: '/js/validation.js'
     });
 });
 
-// @desc    Contact page
-// @Route   /contact
+//  @desc    Contact page
+//  @Route   /contact
 router.get('/contact', (req, res) => {
-    res.render('./pages/index.ejs', {
-        title: 'IP - Contact Us'
+    res.render('./pages/contact.ejs', {
+        title: 'IP - Contact Us',
+        validation: ''
     });
 });
 
-// @desc    About Us page
-// @Route   /about
+//  @desc    About Us page
+//  @Route   /about
 router.get('/about', (req, res) => {
-    res.render('./pages/index.ejs', {
-        title: 'IP - About Us'
+    res.render('./pages/about.ejs', {
+        title: 'IP - About Us',
+        validation: ''
     });
 });
 
-// @desc    Main page
-// @Route   /main
+//  @desc    Main page
+//  @Route   /main
 router.get('/main', (req, res) => {
-    res.render('./pages/index.ejs', {
-        title: 'IP - Main'
+    res.render('./pages/main.ejs', {
+        title: 'IP - Main',
+        validation: ''
     });
 });
 

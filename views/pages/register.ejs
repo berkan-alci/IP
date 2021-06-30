@@ -9,7 +9,66 @@
     </nav>
 
     <main>
-        <h1>This is the Register!</h1>
+        <section id="banner">
+
+        </section>
+        
+        <section id="register">
+            <div class="register container">
+                <div class="register-top">
+                    <h2 class="sub-title"></h2>
+                </div>
+                <div class="register-bottom">
+                    <div class="form-wrapper">
+                        <form id="register-info" novalidate>
+
+                            <p id="success"></p>
+
+                            <div class="form-group">
+                                <label for="username" class="username">Username*</label>
+                                <input type="text" id="username" name="username" placeholder="Gary" autocomplete="username">
+                                <div class="description" id="username-valid"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="email">Email*</label>
+                                <input type="email" id="email" name="email" placeholder="gary@gmail.com" autocomplete="email">
+                                <div class="description" id="email-valid"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="password">Password*</label>
+                                <input type="password" id="password" name="password" placeholder="Password" autocomplete="new-password">
+                                <div class="description" id="password-valid"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="rpassword" class="rpassword">Confirm Password*</label>
+                                <input type="password" id="rpassword" name="rpassword" placeholder="Confirm Password" autocomplete="new-password">
+                                <div class="description" id="rpassword-valid"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="phone">Number*</label>
+                                <input type="phone" id="phone" name="phone" placeholder="0486965588" autocomplete="tel">
+                                <div class="description" id="phone-valid"></div>
+                            </div>
+
+                            <div class="form-group" id="L">
+                                <label for="tos" class="tos">I have read the user agreement</label>
+                                <input type="checkbox" id="tos" name="tos" checked required>
+                                <a href="#">User Agreement</a>
+                                <div class="description" id="tos-valid"></div>
+                            </div>
+
+                            <button type="submit" class="btn register">Create account</button>
+
+                        </form>
+                        <a href="/login">Already have an account?</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     
     <footer>
