@@ -1,13 +1,36 @@
-const mongo = require('../database/mongo');
-const User = require('../database/model/user');
-
+const mongo = require('../../config/mongo');
+const User = require('./schema/user');
+const mongoose = require ('mongoose');
 
 //Send user data to db
-function postUser () {
+const postUser = async (username, hashedPassword, email, phone) => {
 
+    await mongo().then(async (mongoose) => {
+        try {
+            const response = await User.create({
+                username,
+                password: hashedPassword,
+                email,
+                phone
+            });
+            console.log('User created successfully', response);
+        } catch (err) {
+            if (err.code === 11000) {
+                return res.json({status:'error', error:'Username already in use!'});
+            }
+            throw err;
+
+        } finally {
+            mongoose.connection.close();
+        }
+    })
 };
 
-module.export = {
+const getUser = () => {
+
+}
+
+module.exports = {
     postUser,
 
 }

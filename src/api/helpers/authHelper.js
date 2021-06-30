@@ -1,11 +1,17 @@
+const bcrypt = require('bcryptjs');
 
 // encrypt password
+const encryptPassword = async (password) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-function encryptPassword (password) {
+    return hashedPassword;
+};
+
+const checkPassword = (password) => {
 
 };
 
-module.export = {  
+module.exports = {  
     encryptPassword,
 
 }
