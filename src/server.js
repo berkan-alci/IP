@@ -1,23 +1,36 @@
 const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 const log = console.log;
 dotenv.config({path: './src/config/config.env'});
 const morgan = require('morgan');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const mongo = require ('./config/mongo');
+const middlewares = require('./api/middleware/middlewares');
+const authRoutes = require('./api/routes/auth');
+const indexRoutes = require('./api/routes/index');
+
 
 // Morgan setup
 if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-// Routes, view engine & static folder
+//JSON bodyparser
+
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
+
+// View engine & static folder
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname + '..', '..', 'public')));
-app.use('/', require('./api/routes/index'));
 
+//Routes
+app.use('/', indexRoutes);
+app.use(authRoutes);
+app.use(middlewares.notFound);
+app.use(middlewares.errorHandler);
 
 // Starting server
 const start = async () => {

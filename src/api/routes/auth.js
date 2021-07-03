@@ -5,10 +5,8 @@ const { postRegister } = require('../controllers/authController');
 
 //  @desc    User Registration
 //  @route  /auth/register
-router.get('/auth/register', postRegister(req, res));
 
-router.get('/auth/login', (req, res) => {
+router.post('/auth/register', postRegister);
 
-});
 
 module.exports = router;

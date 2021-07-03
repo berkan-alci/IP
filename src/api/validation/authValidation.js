@@ -1,7 +1,6 @@
 
 //Validate registration data
 const registerValidation = (username, password, email, phone) => {
-    
 
     if (!username || typeof username !== 'string') {
         return res.json({status:'error', error:'Invalid username!'});
@@ -22,7 +21,6 @@ const registerValidation = (username, password, email, phone) => {
     if (!phone || typeof phone !== 'string') {
         return res.json({status:'error', error:'Invalid phone number!'})
     }
-
 };
 
 const loginValidation = () => {

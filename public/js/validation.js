@@ -157,7 +157,7 @@ window.addEventListener('load', (e) => {
         }
 
         const sendReqRegister = async () => {
-            const result = await fetch ('/auth/register', {
+            await fetch ('/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
