@@ -175,9 +175,9 @@ window.addEventListener('load', (e) => {
                 success.style.display = "block";
                 success.innerText = "Successfully registered your account!";
             })
-            // .then(() => {
-            //     window.location.href = '/login';
-            // })
+            .then(() => {
+                window.location.href = '/login';
+            })
         };
 
     }
