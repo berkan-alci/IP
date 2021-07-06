@@ -19,8 +19,8 @@ if(process.env.NODE_ENV === 'development') {
 
 //JSON bodyparser
 
-app.use(bodyParser.urlencoded({extended : true}));
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended : true}));
+app.use(express.json());
 
 // View engine & static folder
 app.set('view engine', 'ejs');

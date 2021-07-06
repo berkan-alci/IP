@@ -1,21 +1,52 @@
 
 
-const indexController = () => {
-
+const indexController = (req, res) => {
+    res.render('./pages/index.ejs', {
+        title: 'IP - Home',
+        validation: ''
+    });
 };
 
-const loginController = () => {
-
+const loginController = (req, res) => {
+    res.render('./pages/login.ejs', {
+        title: 'IP - Login',
+        validation: '/js/validation.js'
+    });
 };
 
-const indexController = () => {
-
+const registerController = (req, res) => {
+    res.render('./pages/register.ejs', {
+        title: 'IP - Register',
+        validation: '/js/validation.js'
+    });
 };
 
-const indexController = () => {
-
+const contactController = (req, res) => {
+    res.render('./pages/contact.ejs', {
+        title: 'IP - Contact Us',
+        validation: ''
+    });
 };
 
-const indexController = () => {
-
+const aboutController = (req, res) => {
+    res.render('./pages/about.ejs', {
+        title: 'IP - About Us',
+        validation: ''
+    });
 };
+
+const mainController = (req, res) => {
+    res.render('./pages/main.ejs', {
+        title: 'IP - Main',
+        validation: ''
+    });
+};
+
+module.exports = {
+    indexController,
+    loginController,
+    registerController,
+    contactController,
+    aboutController,
+    mainController,
+}

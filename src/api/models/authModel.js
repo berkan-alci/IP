@@ -13,6 +13,8 @@ const postUser = async (username, hashedPassword, email, phone) => {
                 email,
                 phone
             });
+
+            res.json({status:'ok'});
         } catch (err) {
             if (err.code === 11000) {
                 return res.json({status:'error', error:'Username/Email already in use!'});
@@ -21,6 +23,7 @@ const postUser = async (username, hashedPassword, email, phone) => {
 
         } finally {
             mongoose.connection.close();
+            console.log('MongoDB connection closed');
         }
     });
 };
@@ -42,6 +45,7 @@ const getUser = async (res, username, password) => {
             res.json({status: 'error', error:'Invalid username/password'});
         } finally {
             mongoose.connection.close();
+            console.log('MongoDB connection closed');
         }
     });
 

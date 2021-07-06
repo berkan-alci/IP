@@ -1,63 +1,32 @@
 const express = require('express');
-const app = express();
+const { indexController, loginController, registerController, contactController, aboutController, mainController } = require('../controllers/indexControllers');
 const router = express.Router();
-const path = require('path');
 
 // Variables for EJS
 
 // @desc    Landing page
 // @Route   /
-router.get('/', (req, res) => {
-    res.render('./pages/index.ejs', {
-        title: 'IP - Home',
-        validation: ''
-    });
-});
+router.get('/', indexController );
 
 // @desc    Login page
 // @Route   /login
-router.get('/login', (req, res) => {
-    res.render('./pages/login.ejs', {
-        title: 'IP - Login',
-        validation: '/js/validation.js'
-    });
-});
+router.get('/login', loginController);
 
 //  @desc    Register page
 //  @Route   /register
-router.get('/register', (req, res) => {
-    res.render('./pages/register.ejs', {
-        title: 'IP - Register',
-        validation: '/js/validation.js'
-    });
-});
+router.get('/register', registerController );
 
 //  @desc    Contact page
 //  @Route   /contact
-router.get('/contact', (req, res) => {
-    res.render('./pages/contact.ejs', {
-        title: 'IP - Contact Us',
-        validation: ''
-    });
-});
+router.get('/contact', contactController );
 
 //  @desc    About Us page
 //  @Route   /about
-router.get('/about', (req, res) => {
-    res.render('./pages/about.ejs', {
-        title: 'IP - About Us',
-        validation: ''
-    });
-});
+router.get('/about', aboutController);
 
 //  @desc    Main page
 //  @Route   /main
-router.get('/main', (req, res) => {
-    res.render('./pages/main.ejs', {
-        title: 'IP - Main',
-        validation: ''
-    });
-});
+router.get('/main', mainController);
 
 
 module.exports = router
