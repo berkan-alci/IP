@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
-const { isEmail } = require('validator');
+const jwt = require('jsonwebtoken');
+const Joi = require('joi');
 
 const reqString = {
     type: String,
     required: true,
 }
 
+//User schemas
 const userSchema = mongoose.Schema({
 
     username: {
@@ -23,16 +25,55 @@ const userSchema = mongoose.Schema({
         required: [true, 'Please enter an email'], 
         unique: true,
         lowercase: true,
-        validate: [isEmail, 'Please enter a valid email!']
     },
     phone: {
         type: String,
-        required: true,
-        minLength: 
+        required: true
+    },
+    role: {
+        type: String,
+        required: true
     }
-
 }, { collection: 'users'})
 
-const userModel = mongoose.model('UserSchema', userSchema);
+const teacherSchema = mongoose.Schema({
 
-module.exports = userModel;
+}, {collection: 'users'})
+
+const adminSchema = mongoose.Schema({
+
+}, {collection: 'users'})
+
+// Auth tokens of user roles
+userSchema.methods.generateAuthToken = function() {
+    const token = jwt.sign({_id: this._id}, process.env.JWT_SECRET);
+    return token;
+};
+
+teacherSchema.methods.generateAuthToken = function() {
+    const token = jwt.sign({_id: this._id}, process.env.JWT_SECRET);
+    return token;
+};
+
+adminSchema.methods.generateAuthToken = function() {
+    const token = jwt.sign({_id: this._id}, process.env.JWT_SECRET);
+    return token;
+}
+
+// User models
+const userModel = mongoose.model('user', userSchema);
+const teacherModel = mongoose.model('teacher', teacherSchema);
+const adminModel = mongoose.model('admin', adminSchema);
+
+const validate =  (user) => {
+    const schema = Joi.object({
+        username: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().email().required(),
+        phone: Joi.string().required(),
+        role: Joi.string().required()
+    });
+    return schema.validate(user);
+};
+
+module.exports = {userModel, teacherModel, adminModel, validate};

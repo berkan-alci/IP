@@ -1,7 +1,5 @@
-const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config({path: '../../config/config.env'});
-const JWT_SECRET = process.env.JWT_SECRET;
 
 //Validate registration data
 const registerValidation = (username, password, email, phone) => {
@@ -28,18 +26,9 @@ const registerValidation = (username, password, email, phone) => {
 };
 
 const loginValidation = async (username, password) => {
-
     // Checks if username/password is successful
-    if (await bcrypt.compare(password, user.password)) {
-        const token = jwt.sign(
-            {
-                id: user._id,
-                username: user.username
-            },
-             JWT_SECRET
-        )
-        return res.json({ status: 'ok', data: token })
-    }
+    if (await bcrypt.compare(password, user.password)) return res.status(200);
+    
 };
 
 module.exports = {
